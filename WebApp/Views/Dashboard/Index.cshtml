@@ -65,6 +65,7 @@
     </div>
 
     <div class="dashboard_bottom_container row">
+        <!--
         <div class="dashboard_oee_container col-xs-12 col-sm-12 col-md-8">
             <div id="oeeHeaderLabel" class="dashboard_oee_header overflow row">@Strings.OeeHeaderLabel</div>
             <div class="dashboard_oee_details_group_container row">
@@ -87,21 +88,29 @@
                 </div>
             </div>
         </div>
+            -->
 
         <!--
         <div class="dashboard_oee_kpi_separator"></div>
             -->
 
         <div class="dashboard_kpi_container col-xs-12 col-sm-12 col-md-4">
-            <div class="dashboard_kpi_header row">@Strings.KpiContainerLabel</div>
+            <!-- <div class="dashboard_kpi_header row">@Strings.KpiContainerLabel</div> -->
+            <div class="dashboard_kpi_header row">Tokyo factory : Power consumptions (average)</div>
             <div class="dashboard_kpi_details_group_container row">
-                <div id="kpi1Container" class="dashboard_kpi_details_container col-xs-12 col-sm-6" data-toggle="tooltip" onclick="openChartContextPanel('@Strings.Kpi1Label', '@ContosoPerformanceRelevance.Kpi1');">
-                    <div id="kpi1Label" class="dashboard_kpi_details_header overflow row">@Strings.Kpi1Label</div>
+                <div id="kpi1Container" class="dashboard_kpi_details_container col-xs-12 col-sm-6" data-toggle="tooltip" onclick="openChartContextPanel('Capper power consumption', '@ContosoPerformanceRelevance.Kpi1');">
+                    <!-- <div id="kpi1Label" class="dashboard_kpi_details_header overflow row">@Strings.Kpi1Label</div> -->
+                    <div id="kpi1Label" class="dashboard_kpi_details_header overflow row">Capper power consumption</div>
                     <div id="kpi1Chart" class="dashboard_kpi_details_chart_control row"></div>
                 </div>
-                <div id="kpi2Container" class="dashboard_kpi_details_container col-xs-12 col-sm-6" onclick="openChartContextPanel('@Strings.Kpi2Label', '@ContosoPerformanceRelevance.Kpi2');">
-                    <div id="kpi2Label" class="dashboard_kpi_details_header overflow row">@Strings.Kpi2Label</div>
+                <div id="kpi2Container" class="dashboard_kpi_details_container col-xs-12 col-sm-6" onclick="openChartContextPanel('Labeler power consumption', '@ContosoPerformanceRelevance.Kpi2');">
+                    <!-- <div id="kpi2Label" class="dashboard_kpi_details_header overflow row">@Strings.Kpi2Label</div> -->
+                    <div id="kpi2Label" class="dashboard_kpi_details_header overflow row">Labeler power consumption</div>
                     <div id="kpi2Chart" class="dashboard_kpi_details_chart_control row"></div>
+                </div>
+                <div id="QualityContainer" class="dashboard_kpi_details_container col-xs-12 col-sm-6" onclick="openChartContextPanel('Quality', '@ContosoPerformanceRelevance.OeeQuality');">
+                    <div id="oeeQualityLabel" class="dashboard_kpi_details_header overflow row">Quality</div>
+                    <div id="oeeQualityChart" class="dashboard_kpi_details_chart_control row"></div>
                 </div>
             </div>
         </div>
@@ -117,6 +126,7 @@
             <div id="nodeMsg" class="msg-container"></div>
             <div id="graphHeader" class="graph_header">@Strings.GraphRDXLinkHeader</div>
             <div id="graph1" class="graph_container" tabindex="0" onclick="openRDXExplorerLink(rdxExplorerHourLink);" onkeydown="if (event.keyCode == 13)openRDXExplorerLink(rdxExplorerHourLink);">
+                <div class="dashboard-graph-header-text">@Strings.GraphLastHour</div>
                 <div class="dashboard-graph-header-text">@Strings.GraphLastHour</div>
                 <div id="dashboardContextpanelOnehourHistory" class="row" aria-hidden="true"></div>
             </div>
@@ -375,6 +385,7 @@
         }
     });
 
+
     //
     // KPI charts creation.
     //
@@ -401,7 +412,7 @@
         },
         data: {
             columns: [
-                    ['Actual', @Model.TopNode.Kpi1Last.Kpi.ToString(CultureInfo.CreateSpecificCulture("en-en"))]
+                    ['Actual', @Math.Round(Model.TopNode.Kpi1Last.Kpi, 1).ToString(CultureInfo.CreateSpecificCulture("en-en"))]
             ],
             type: 'gauge',
         },
@@ -409,7 +420,7 @@
             label: {
                 show: false,
                 format: function(value, ratio) {
-                    return value;
+                    return Math.round(value*10)/10;
                 },
             },
             width: 27,

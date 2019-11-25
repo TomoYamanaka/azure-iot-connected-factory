@@ -2,9 +2,144 @@
   "Image": "world.jpg",
   "Factories": [
     {
+      "Guid": "56A77FAF-E642-46B2-821B-E5D86C03414F",
+      "Name": "Tokyo",
+      "Description": "Milk-tea Bottling system",
+      "Location": {
+        "City": "Tokyo",
+        "Country": "Japan",
+        "Latitude": 35.62974,
+        "Longitude": 139.79405
+      },
+      "Image": "opc_factory.png",
+      "ProductionLines": [
+        {
+          "Guid": "D22DE84B-C975-4827-B7BC-4786D6CD1EFF",
+          "Name": "Production Line",
+          "Description": "Capper and Labeler Maintenance",
+          "Image": "opc_line.png",
+          "ImagePushpin": {
+            "Top": 510,
+            "Left": 360
+          },
+          "Stations": [
+            {
+              "Name": "Sensor Edge",
+              "Description": "Maintenance sensing edge",
+              "Image": "opc_sensoredge.png",
+              "ImagePushpin": {
+                "Top": 420,
+                "Left": 500
+              },
+              "OpcUri": "urn://testserver11/Renesas/MicroUaServer",
+              "Kpi1": {
+                "Minimum": 0,
+                "Target": 4000,
+                "Maximum": 5000
+              },
+              "Kpi2": {
+                "Minimum": 0,
+                "Target": 4000,
+                "Maximum": 5000,
+              },
+              "OpcNodes": [
+                {
+                  "NodeId": "ns=1;i=20021",
+                  "SymbolicName": "CapperPowerConsumption",
+                  "Units": "Wh"
+                },
+                {
+                  "NodeId": "ns=1;i=20022",
+                  "SymbolicName": "CapperMotorVibration(RMS)",
+                  "Units": "Gal"
+                },
+                {
+                  "NodeId": "ns=1;i=20023",
+                  "SymbolicName": "LabelerPowerConsumption",
+                  "Units": "Wh"
+                },
+                {
+                  "NodeId": "ns=1;i=20024",
+                  "SymbolicName": "LabelerMotorVibration(RMS)",
+                  "Units": "Gal"
+                },
+                {
+                  "SymbolicName": "RunningTime",
+                  "Relevance": [ "OeeAvailability_Running" ],
+                  "OpCode": "Timespan",
+                  "Visible": false,
+                  "Units": "ms"
+                },
+                {
+                  "NodeId": "ns=1;i=20071",
+                  "SymbolicName": "AvailabilityRunningTime",
+                  "Visible": false,
+                  "Units": "ms"
+                },
+                {
+                  "NodeId": "ns=1;i=20072",
+                  "SymbolicName": "AvailabilityFaultTime",
+                  "Relevance": [ "OeeAvailability_Fault" ],
+                  "OpCode": "SubMaxMin",
+                  "Visible": false,
+                  "Units": "ms"
+                },
+                {
+                  "NodeId": "ns=1;i=20073",
+                  "SymbolicName": "PerformanceActual",
+                  "Relevance": [ "OeePerformance_Actual" ],
+                  "OpCode": "Avg",
+                  "Visible": false,
+                  "Units": "ms"
+                },
+                {
+                  "ConstValue": 90,
+                  "SymbolicName": "PerformanceIdeal",
+                  "Relevance": [ "OeePerformance_Ideal" ],
+                  "OpCode": "Const",
+                  "Visible": false,
+                  "Units": "ms"
+                },
+                {
+                  "NodeId": "ns=1;i=20075",
+                  "SymbolicName": "QualityGood",
+                  "Relevance": [ "OeeQuality_Good" ],
+                  "OpCode": "SubMaxMin",
+                  "Units": "bottles"
+                },
+                {
+                  "NodeId": "ns=1;i=20076",
+                  "SymbolicName": "QualityBad",
+                  "Relevance": [ "OeeQuality_Bad" ],
+                  "OpCode": "SubMaxMin",
+                  "Units": "bottles"
+                },
+                {
+                  "NodeId": "ns=1;i=20077",
+                  "SymbolicName": "Kpi1LabellerPC",
+                  "Relevance": [ "Kpi1" ],
+                  "OpCode": "Avg",
+                  "Visible": false,
+                  "Units": "Wh"
+                },
+                {
+                  "NodeId": "ns=1;i=20078",
+                  "SymbolicName": "Kpi2LabellerMV",
+                  "Relevance": [ "Kpi2" ],
+                  "OpCode": "Avg",
+                  "Visible": false,
+                  "Units": "Wh"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
       "Guid": "73B534AE-7C7E-4877-B826-F1C0EA339F65",
       "Name": "Munich",
-      "Description": "Braking system",
+      "Description": "Milk-tea Bottling system",
       "Location": {
         "City": "Munich",
         "Country": "Germany",
@@ -82,7 +217,7 @@
                   "SymbolicName": "RunningTime",
                   "Relevance": [ "OeeAvailability_Running" ],
                   "OpCode": "Timespan",
-                  "Visible": false,
+                  "Visible": true,
                   "Units": "ms"
                 },
                 {
@@ -122,7 +257,7 @@
                   "ConstValue": 6000,
                   "SymbolicName": "IdealCycleTime",
                   "OpCode": "Const",
-                  "Visible": false,
+                  "Visible": true,
                   "Units": "ms",
                   "Relevance": [ "OeePerformance_Ideal" ]
                 }
@@ -177,7 +312,7 @@
                   "SymbolicName": "RunningTime",
                   "Relevance": [ "OeeAvailability_Running" ],
                   "OpCode": "Timespan",
-                  "Visible": false,
+                  "Visible": true,
                   "Units": "ms"
                 },
                 {
@@ -198,7 +333,7 @@
                   "ConstValue": 6000,
                   "SymbolicName": "IdealCycleTime",
                   "OpCode": "Const",
-                  "Visible": false,
+                  "Visible": true,
                   "Units": "ms",
                   "Relevance": [ "OeePerformance_Ideal" ]
                 }
@@ -254,7 +389,7 @@
                   "SymbolicName": "RunningTime",
                   "Relevance": [ "OeeAvailability_Running" ],
                   "OpCode": "Timespan",
-                  "Visible": false,
+                  "Visible": true,
                   "Units": "ms"
                 },
                 {
@@ -275,7 +410,7 @@
                   "ConstValue": 6000,
                   "SymbolicName": "IdealCycleTime",
                   "OpCode": "Const",
-                  "Visible": false,
+                  "Visible": true,
                   "Units": "ms",
                   "Relevance": [ "OeePerformance_Ideal" ]
                 }
@@ -287,13 +422,13 @@
     },
     {
       "Guid": "CB1DBFA0-F520-46E1-85E1-97DCD67860D0",
-      "Name": "Cape Town",
-      "Description": "Fuel supply system",
+      "Name": "Assam",
+      "Description": "Black tea leaf production",
       "Location": {
-        "City": "Cape Town",
-        "Country": "South Africa",
-        "Latitude": -33.91909,
-        "Longitude": 18.42199
+        "City": "Assam",
+        "Country": "India",
+        "Latitude": 26.30748,
+        "Longitude": 92.40156
       },
       "Image": "factory.png",
       "ProductionLines": [
@@ -554,13 +689,13 @@
     },
     {
       "Guid": "9DEB6B9C-2358-464F-BE06-86F22E4D66B7",
-      "Name": "Mumbai",
-      "Description": "Exhaust system",
+      "Name": "Uva, Dimbula",
+      "Description": "Black tea leaf production",
       "Location": {
-        "City": "Mumbai",
-        "Country": "India",
-        "Latitude": 18.93016,
-        "Longitude": 72.83028
+        "City": "Uva",
+        "Country": "Sri Lanka",
+        "Latitude": 6.96050,
+        "Longitude": 80.64578
       },
       "Image": "factory.png",
       "ProductionLines": [
@@ -821,13 +956,13 @@
     },
     {
       "Guid": "17BB3DAB-C22A-4115-8BFE-038B9A5BC04C",
-      "Name": "Seattle",
-      "Description": "Bearings",
+      "Name": "Rukuriri",
+      "Description": "Black tea leaf production",
       "Location": {
-        "City": "Seattle",
-        "Country": "United States",
-        "Latitude": 47.60357,
-        "Longitude": -122.3295
+        "City": "Rukuriri",
+        "Country": "kenya",
+        "Latitude": -0.38808,
+        "Longitude": 37.52131
       },
       "Image": "factory.png",
       "ProductionLines": [
@@ -1089,7 +1224,7 @@
     {
       "Guid": "DA530CC7-AF95-45B3-9322-75E48A375A65",
       "Name": "Beijing",
-      "Description": "Air conditioning system",
+      "Description": "Milk-tea Bottling system",
       "Location": {
         "City": "Beijing",
         "Country": "China",
@@ -1858,7 +1993,7 @@
     {
       "Guid": "FF05FD10-E358-48CB-83ED-F38A7CCB1FA3",
       "Name": "Rio De Janeiro",
-      "Description": "Suspension system",
+      "Description": "Milk-tea Bottling system",
       "Location": {
         "City": "Rio De Janeiro",
         "Country": "Brazil",
@@ -1931,7 +2066,7 @@
                   "SymbolicName": "RunningTime",
                   "Relevance": [ "OeeAvailability_Running" ],
                   "OpCode": "Timespan",
-                  "Visible": false,
+                  "Visible": true,
                   "Units": "ms"
                 },
                 {
@@ -1959,7 +2094,7 @@
                   "ConstValue": 10000,
                   "SymbolicName": "IdealCycleTime",
                   "OpCode": "Const",
-                  "Visible": false,
+                  "Visible": true,
                   "Units": "ms",
                   "Relevance": [ "OeePerformance_Ideal" ]
                 }
@@ -2014,7 +2149,7 @@
                   "SymbolicName": "RunningTime",
                   "Relevance": [ "OeeAvailability_Running" ],
                   "OpCode": "Timespan",
-                  "Visible": false,
+                  "Visible": true,
                   "Units": "ms"
                 },
                 {
@@ -2035,7 +2170,7 @@
                   "ConstValue": 10000,
                   "SymbolicName": "IdealCycleTime",
                   "OpCode": "Const",
-                  "Visible": false,
+                  "Visible": true,
                   "Units": "ms",
                   "Relevance": [ "OeePerformance_Ideal" ]
                 }
@@ -2091,7 +2226,7 @@
                   "SymbolicName": "RunningTime",
                   "Relevance": [ "OeeAvailability_Running" ],
                   "OpCode": "Timespan",
-                  "Visible": false,
+                  "Visible": true,
                   "Units": "ms"
                 },
                 {
@@ -2112,7 +2247,7 @@
                   "ConstValue": 10000,
                   "SymbolicName": "IdealCycleTime",
                   "OpCode": "Const",
-                  "Visible": false,
+                  "Visible": true,
                   "Units": "ms",
                   "Relevance": [ "OeePerformance_Ideal" ]
                 }
